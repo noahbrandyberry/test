@@ -1,18 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-
-interface School {
-  id: string;
-  name: string;
-  primary_color: string;
-  location: Location;
-  visible: boolean;
-  logo_url: string;
-}
-
-interface Location {
-  address_1: string;
-}
+import { SchoolCard } from "../components/school-card";
+import { School } from "../models";
 
 export default function Home() {
   const [schools, setSchools] = useState<School[]>([]);
@@ -34,20 +23,11 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {filteredSchools.map((school) => (
-        <p
-          key={school.id}
-          style={{
-            color: "black",
-            fontSize: "2rem",
-            fontWeight: "bold",
-            textAlign: "center",
-            textShadow: "2px 2px 5px " + school.primary_color,
-          }}
-        >
-          {school.name}
-        </p>
-      ))}
+      <div className="gap-4">
+        {filteredSchools.map((school) => (
+          <SchoolCard school={school} key={school.id} />
+        ))}
+      </div>
     </main>
   );
 }
