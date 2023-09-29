@@ -1,6 +1,7 @@
 import { TeamCard } from "@/components/team-card";
 import { useSchools } from "@/queries/schools";
 import { useTeams } from "@/queries/teams";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 export default function Page() {
@@ -8,23 +9,16 @@ export default function Page() {
   const { data: schools } = useSchools();
   const school = schools?.find((school) => school.id === router.query.id);
   const { data: teams } = useTeams(school?.id);
+  const team = teams?.find((team) => team.id === router.query.teamId);
 
-  const filteredTeams = teams?.filter(
-    (team) => team.season.name === "Fall" && team.year.name === "2023/2024"
-  );
+  if (!team) {
+    return null;
+  }
 
   return (
     <div>
-      <p>
-        {school?.name} {teams?.length}
-      </p>
-
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {school &&
-          filteredTeams?.map((team) => (
-            <TeamCard key={team.id} team={team} school={school} />
-          ))}
-      </div>
+      <Image src={team.photo_url} alt={team.name} width={100} height={100} />
+      <p>{team?.name}</p>
     </div>
   );
 }

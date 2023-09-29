@@ -8,6 +8,24 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "s3.amazonaws.com",
+        port: "",
+      },
+    ],
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.hillsborochristianacademy.org",
+        port: "",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
