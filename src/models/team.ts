@@ -1,3 +1,5 @@
+import { Player } from "./player";
+
 export interface Team {
   id: string;
   name: string;
@@ -36,20 +38,6 @@ interface Image {
   id: string;
   url: string;
   description: string;
-  team_id: string;
-  created_at: string;
-  updated_at: string;
-}
-
-interface Player {
-  id: number;
-  first_name: string;
-  last_name: string;
-  grad_year: string;
-  jersey: string;
-  position: string;
-  height: string;
-  weight: string;
   team_id: string;
   created_at: string;
   updated_at: string;
