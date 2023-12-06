@@ -2,6 +2,7 @@
 import { TeamCard } from "@/components/team-card";
 import { SchoolCard } from "../components/school-card";
 import { useSchools } from "@/hooks/schools";
+import { Copyright } from "@/components/copyright";
 
 export default function Home() {
   const { data: schools } = useSchools();
@@ -26,6 +27,7 @@ export default function Home() {
           <SchoolCard school={school} key={school.id} />
         ))}
       </div>
+      <Copyright yearBuilt={2022} appName="School Sports" />
     </main>
   );
 }
